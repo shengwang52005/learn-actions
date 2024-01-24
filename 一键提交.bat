@@ -1,12 +1,12 @@
 @echo off
 git add .
-set /p commit=commit message...
+set /p commit=Commit message...
 echo .
 git commit -m "%commit%"
-echo %commit%
-echo sure?
+echo Commit message:%commit%
+echo Are you sure?
 pause
 git push origin main
-echo Done
+echo Done!
 pause
 echo
