@@ -1,0 +1,16 @@
+name: Get Wechat for Windows
+on: 
+  schedule:
+  # 定时任务，在每天的5点推送天气信息到邮箱
+    - cron: '0/1 * * * *'
+    
+jobs:
+  get-file:
+    name: get file
+    runs-on: ubuntu-latest
+    steps:
+    - name: get file
+      env: 
+        url: https://dldir1v6.qq.com/weixin/Windows/WeChatSetup.exe
+      run: |
+        echo $url
