@@ -1,17 +1,35 @@
 name: Get Wechat for Windows
 on: 
   schedule:
-  # 定时任务，在每天的5点推送天气信息到邮箱
-    - cron: '0/1 * * * *'
+  # 定时任务,cron表达式
+    - cron: '0/120 * * * *'
   workflow_dispatch:
     
 jobs:
-  get-file:
-    name: get file
+  Get-Wechat-for-Windows:
+    name: Get
     runs-on: ubuntu-latest
     steps:
-    - name: get file
-      env: 
-        url: https://dldir1v6.qq.com/weixin/Windows/WeChatSetup.exe
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    #下载
+    - name: get-file
       run: |
         echo $url
+        curl -O https://dldir1v6.qq.com/weixin/Windows/WeChatSetup.exe
+        chmod +x WeChatSetup.exe
+    #重命名&提交
+    - name: rename
+      run: |
+        current_time=$(date +"%Y%m%d%H%M%S")
+        echo $current_time
+        mv WeChatSetup.exe assets/WeChatSetup-${current_time}.exe
+    #配置git并提交
+    - name: config-push
+      run: |
+        git config --global user.email "shengwang52005@163.com"
+        git config --global user.name "shengwang52005"
+        git add .
+        git commit -m "Github Actions Auto Commit - ${current_time}"
+        git remote add origin_repo https://github.com/shengwang52005/learn-actions.git
+        git push origin main
