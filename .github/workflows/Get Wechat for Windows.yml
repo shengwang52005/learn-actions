@@ -19,15 +19,17 @@ jobs:
         curl -O https://dldir1v6.qq.com/weixin/Windows/WeChatSetup.exe
         chmod +x WeChatSetup.exe
     #重命名&提交
-    - name: rename
+    - name: rename-push
       run: |
         current_time=$(date +"%Y%m%d%H%M%S")
         echo $current_time
         mkdir -p assets
         mv WeChatSetup.exe assets/WeChatSetup-${current_time}.exe
+
         git config --global user.email "shengwang52005@163.com"
         git config --global user.name "$GITHUB_ACTOR"
         git add .
         git commit -m "Auto commit - ${current_time}"
+
         git remote | grep -q '^origin$' || git remote add origin https://github.com/shengwang52005/learn-actions.git
         git push origin main
