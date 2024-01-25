@@ -27,7 +27,8 @@ jobs:
         mv WeChatSetup.exe assets/WeChatSetup-${current_time}.exe
 
         git config --global user.email "shengwang52005@163.com"
-        git config --global user.name "$GITHUB_ACTOR"
+        git config --global user.name "shengwang52005"
+        git init
         git add .
         git commit -m "Auto commit - ${current_time}"
 
