@@ -29,8 +29,8 @@ jobs:
     - name: config-push
       run: |
         git config --global user.email "shengwang52005@163.com"
-        git config --global user.name "shengwang52005"
+        git config --global user.name "$GITHUB_ACTOR"
         git add .
-        git commit -m "Github Actions Auto Commit - ${current_time}"
-        git remote add origin_repo https://github.com/shengwang52005/learn-actions.git
+        git commit -m "Auto commit - ${current_time}"
+        git remote add origin https://github.com/shengwang52005/learn-actions.git
         git push origin main
