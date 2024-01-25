@@ -23,6 +23,7 @@ jobs:
       run: |
         current_time=$(date +"%Y%m%d%H%M%S")
         echo $current_time
+        mkdir -p assets
         mv WeChatSetup.exe assets/WeChatSetup-${current_time}.exe
     #配置git并提交
     - name: config-push
