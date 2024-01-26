@@ -1,8 +1,5 @@
 name: Get Wechat for Windows
 on: 
-  schedule:
-  # 定时任务,cron表达式
-    - cron: '0/120 * * * *'
   workflow_dispatch:
     
 jobs:
