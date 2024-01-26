@@ -27,8 +27,10 @@ jobs:
         mkdir -p assets
         mv WeChatSetup.exe assets/WeChatSetup-${current_time}.exe
 
+        git config --global user.email "$TOKEN@github.com"
+        git config --global user.name "Yshengwang52005"
         git init
         git add .
         git commit -m "Auto Commit - $current_time"
-        git remote add origin https://$TOKEN@github.com/shengwang52005/learn-actions.git
+        git remote add origin https://shengwang52005@github.com/shengwang52005/learn-actions.git
         git push -u origin main
